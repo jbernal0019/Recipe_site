@@ -114,6 +114,11 @@ Using [HTTPie](https://httpie.org/) REST API client:
 http -a user:user1234 POST http://localhost:8080/api/v1/1/ingredients/ template:='{"data":[{"name":"text","value":"Ingredient1"}]}' Content-Type:application/vnd.collection+json Accept:application/vnd.collection+json
 ```
 
+### Backend database design.
+
+Available [here](https://github.com/jbernal0019/Recipe_site/wiki/Backend-database-design).
+
+
 ### Destroy Recipe site
 
 Stop and remove Recipe site services by running the destroy bash script from the repository source directory:
