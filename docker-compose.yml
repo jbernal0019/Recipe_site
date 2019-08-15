@@ -1,0 +1,40 @@
+# https://docs.docker.com/compose/yml/
+# Each service defined in docker-compose.yml must specify exactly one of
+# image or build. Other keys are optional, and are analogous to their
+# docker run command-line counterparts.
+#
+# As with docker run, options specified in the Dockerfile (e.g., CMD,
+# EXPOSE, VOLUME, ENV) are respected by default - you don't need to
+# specify them again in docker-compose.yml.
+#
+
+version: '3'
+
+services:
+  recipe_site_dev:
+    image:  jbernal0019/recipe_site:dev
+    volumes:
+      - ./recipe_backend:/usr/src/recipe_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - recipe_site_dev_db
+    labels:
+      name: "Recipe_site"
+      role: "Development server"
+
+  recipe_site_dev_db:
+    image:  mysql:5
+    volumes:
+      - recipe_site_dev_db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootp
+      - MYSQL_DATABASE=recipe_site_dev
+      - MYSQL_USER=recipe
+      - MYSQL_PASSWORD=recipe1234
+    labels:
+      name: "Recipe_site MySQL Database"
+      role: "Development database"
+
+volumes:
+  recipe_site_dev_db_data:
