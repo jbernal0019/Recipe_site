@@ -65,12 +65,3 @@ class ResponseMiddleware(object):
     def process_exception(self, request, exception):
         print(exception)
         return api_500(request)
-
-
-
-
-
-
-
-
-

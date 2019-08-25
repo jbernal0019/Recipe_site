@@ -1,7 +1,7 @@
 # Recipe_site
 
 
-Back end for Recipe site. This is a Django-MySQL project.
+Back end for Recipe site. This is a Django-PostgreSQL project.
 
 ## Recipe site development and testing
 

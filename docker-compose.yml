@@ -12,9 +12,9 @@ version: '3'
 
 services:
   recipe_site_dev:
-    image:  jbernal0019/recipe_site:dev
+    image: jbernal0019/recipe_site:dev
     volumes:
-      - ./recipe_backend:/usr/src/recipe_backend
+      - ./recipe_backend:/home/localuser/recipe_backend
     ports:
       - "8080:8080"
     depends_on:
@@ -24,16 +24,15 @@ services:
       role: "Development server"
 
   recipe_site_dev_db:
-    image:  mysql:5
+    image: postgres:11
     volumes:
-      - recipe_site_dev_db_data:/var/lib/mysql
+      - recipe_site_dev_db_data:/var/lib/postgresql/data
     environment:
-      - MYSQL_ROOT_PASSWORD=rootp
-      - MYSQL_DATABASE=recipe_site_dev
-      - MYSQL_USER=recipe
-      - MYSQL_PASSWORD=recipe1234
+      - POSTGRES_DB=recipe_site_dev
+      - POSTGRES_USER=recipe
+      - POSTGRES_PASSWORD=Recipe1234
     labels:
-      name: "Recipe_site MySQL Database"
+      name: "Recipe_site PostgreSQL Database"
       role: "Development database"
 
 volumes:
